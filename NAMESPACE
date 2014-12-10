@@ -3,3 +3,4 @@
 export(getClimateChange)
 export(getSSTAnnualArray)
 export(loadHadSST)
+export(truncateMat)

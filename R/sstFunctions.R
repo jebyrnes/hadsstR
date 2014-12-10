@@ -117,9 +117,3 @@ getSpatialGradMats <- function(sstObj, years=1969:2009){
   
   getSpatialGradMatsFromMats(NSmat, EWmat)
 }
-
-truncateMat <- function(mat, upper, lower){
-  mat[mat>upper] <- upper
-  mat[mat<lower] <- lower
-  mat
-}

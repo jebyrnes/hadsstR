@@ -50,7 +50,7 @@
 #' levelplot(climateChangeMats$linearChangeMat ~ lon * lat, 
 #'  data = latLonGrid, col.regions = pal(101), at=seq(-1,1,length.out=101))
 #'
-#' with(climateChangeMats, image(lon, lat, spatialMat, col=pal(81)))
+#' with(climateChangeMats, image(lon, lat, spatialGradMat, col=pal(81)))
 #' with(climateChangeMats, image(lon, lat, NSmat, col=pal2(80)))
 #' levelplot(climateChangeMats$EWmat ~ lon * lat, col.regions=pal2(100),
 #'  data = latLonGrid, at=seq(-0.025, 0.025, length.out=100))
