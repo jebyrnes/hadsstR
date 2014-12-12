@@ -10,6 +10,19 @@ This library was developed following my own interest in replicating some of the 
 Met Office Hadley Centre Sea Surface Temperature 1.1 dataset, available at http://www.metoffice.gov.uk/hadobs/hadisst/data/download.html in netcdf format (the file HadISST1.1_sst_1870on.pp.gz gunzipped).
 
 It provides a simple function to load the netcdf data.
+
+##  Installation
+```{r, eval=FALSE}
+install.packages("ncdf")
+install.packages("chron")
+
+#install.packages("devtools")
+library(devtools)
+install_github("hadsstR", "jebyrnes")
+```
+
+## Loading and Creating Derived Data for Analysis
+
 ```{r, cache=TRUE}
 library(hadsstR)
 sstData <- loadHadSST(directory="../", hadsstFilename="HadISST_sst.nc") 

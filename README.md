@@ -10,11 +10,20 @@ netcdf format (the file HadISST1.1\_sst\_1870on.pp.gz gunzipped).
 
 It provides a simple function to load the netcdf data.
 
+Installation
+------------
+
+    install.packages("ncdf")
+    install.packages("chron")
+
+    #install.packages("devtools")
+    library(devtools)
+    install_github("hadsstR", "jebyrnes")
+
+Loading and Creating Derived Data for Analysis
+----------------------------------------------
+
     library(hadsstR)
-
-    ## Loading required package: ncdf
-    ## Loading required package: chron
-
     sstData <- loadHadSST(directory="../", hadsstFilename="HadISST_sst.nc") 
     summary(sstData)
 
@@ -39,7 +48,8 @@ example, average temperature over the timespan
 
     with(climateChangeMats, image(lon, lat, averageMat, col=pal(80)))
 
-![](README_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+![plot of chunk
+unnamed-chunk-4](README_files/figure-markdown_strict/unnamed-chunk-4.png)
 
 Or the slope of the regression between temperature and year for each
 lat/long cell
@@ -50,24 +60,28 @@ lat/long cell
     levelplot(climateChangeMats$linearChangeMat ~ lon * lat, 
       data = latLonGrid, col.regions = pal(101), at=seq(-1,1,length.out=101))
 
-![](README_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![plot of chunk
+unnamed-chunk-5](README_files/figure-markdown_strict/unnamed-chunk-5.png)
 
 We can look at spatial gradients in temperature
 
     pal2 <- colorRampPalette(c("green", "lightblue", "white", "yellow", "orange"))
     with(climateChangeMats, image(lon, lat, spatialGradMat, col=pal2(101)))
 
-![](README_files/figure-markdown_strict/unnamed-chunk-5-1.png)
+![plot of chunk
+unnamed-chunk-6](README_files/figure-markdown_strict/unnamed-chunk-61.png)
 
     levelplot(climateChangeMats$NSmat ~ lon * lat, col.regions=pal(100),
               data = latLonGrid, at=seq(-0.015, 0.015, length.out=100))
 
-![](README_files/figure-markdown_strict/unnamed-chunk-5-2.png)
+![plot of chunk
+unnamed-chunk-6](README_files/figure-markdown_strict/unnamed-chunk-62.png)
 
     levelplot(climateChangeMats$EWmat ~ lon * lat, col.regions=pal2(100),
               data = latLonGrid, at=seq(-0.025, 0.025, length.out=100))
 
-![](README_files/figure-markdown_strict/unnamed-chunk-5-3.png)
+![plot of chunk
+unnamed-chunk-6](README_files/figure-markdown_strict/unnamed-chunk-63.png)
 
 And with all of this, we can see climate change velocity
 
@@ -82,7 +96,8 @@ And with all of this, we can see climate change velocity
               col.regions = pal(100),
                at=seq(-200,200,length.out=100))
 
-![](README_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+![plot of chunk
+unnamed-chunk-7](README_files/figure-markdown_strict/unnamed-chunk-7.png)
 
 Note that in the future I hope to add more functionality and deal with
 seasonal data. These methods *should* also work for other Hadley Centre
