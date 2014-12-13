@@ -36,7 +36,7 @@ climateChangeMats <- getClimateChange(sstData, years=1960:2009)
 ```
 
 We can plot a number of derived quantities from this object. For example, average temperature over the timespan
-```{r}
+```{r averagePlot}
 #Let's plot some of these matrices
 pal <- colorRampPalette(c("blue","white", "red"))
 
@@ -45,7 +45,7 @@ with(climateChangeMats, image(lon, lat, averageMat, col=pal(80)))
 ```
 
 Or the slope of the regression between temperature and year for each lat/long cell
-```{r}
+```{r linearChangePlot}
 library(lattice)
 latLonGrid <- expand.grid(lon = climateChangeMats$lon, lat = climateChangeMats$lat)
 
@@ -54,7 +54,7 @@ levelplot(climateChangeMats$linearChangeMat ~ lon * lat,
 ```
 
 We can look at spatial gradients in temperature
-```{r}
+```{r gradientPlots}
 pal2 <- colorRampPalette(c("green", "lightblue", "white", "yellow", "orange"))
 with(climateChangeMats, image(lon, lat, spatialGradMat, col=pal2(101)))
 
@@ -66,7 +66,7 @@ levelplot(climateChangeMats$EWmat ~ lon * lat, col.regions=pal2(100),
 ``` 
 
 And with all of this, we can see climate change velocity
-```{r}
+```{r velocityPlots}
 #create a velocity matrix where values >200 and < -200 are truncated to those limits
 #for easier plotting, as in Burrows et al. 20011
 velMatTruncated <- climateChangeMats$velocityMat

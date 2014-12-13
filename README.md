@@ -48,7 +48,7 @@ example, average temperature over the timespan
 
     with(climateChangeMats, image(lon, lat, averageMat, col=pal(80)))
 
-![](README_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![](README_files/figure-markdown_strict/averagePlot-1.png)
 
 Or the slope of the regression between temperature and year for each
 lat/long cell
@@ -59,24 +59,24 @@ lat/long cell
     levelplot(climateChangeMats$linearChangeMat ~ lon * lat, 
       data = latLonGrid, col.regions = pal(101), at=seq(-1,1,length.out=101))
 
-![](README_files/figure-markdown_strict/unnamed-chunk-5-1.png)
+![](README_files/figure-markdown_strict/linearChangePlot-1.png)
 
 We can look at spatial gradients in temperature
 
     pal2 <- colorRampPalette(c("green", "lightblue", "white", "yellow", "orange"))
     with(climateChangeMats, image(lon, lat, spatialGradMat, col=pal2(101)))
 
-![](README_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+![](README_files/figure-markdown_strict/gradientPlots-1.png)
 
     levelplot(climateChangeMats$NSmat ~ lon * lat, col.regions=pal(100),
               data = latLonGrid, at=seq(-0.015, 0.015, length.out=100))
 
-![](README_files/figure-markdown_strict/unnamed-chunk-6-2.png)
+![](README_files/figure-markdown_strict/gradientPlots-2.png)
 
     levelplot(climateChangeMats$EWmat ~ lon * lat, col.regions=pal2(100),
               data = latLonGrid, at=seq(-0.025, 0.025, length.out=100))
 
-![](README_files/figure-markdown_strict/unnamed-chunk-6-3.png)
+![](README_files/figure-markdown_strict/gradientPlots-3.png)
 
 And with all of this, we can see climate change velocity
 
@@ -91,7 +91,7 @@ And with all of this, we can see climate change velocity
               col.regions = pal(100),
                at=seq(-200,200,length.out=100))
 
-![](README_files/figure-markdown_strict/unnamed-chunk-7-1.png)
+![](README_files/figure-markdown_strict/velocityPlots-1.png)
 
 Note that in the future I hope to add more functionality and deal with
 seasonal data. These methods *should* also work for other Hadley Centre
