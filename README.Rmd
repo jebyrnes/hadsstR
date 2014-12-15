@@ -82,6 +82,11 @@ levelplot(velMatTruncated ~ lon * lat, data = latLonGrid, #at = cutpts,
            at=seq(-200,200,length.out=100))
 ```
 
+If we want to extract values for particular metrics at particular latitudes and longitudes, we can get the value at the closes lat/long in the data.
+```{r latLong}
+getClimateLatLon(climateChangeMats, -50.232, -100.55, "linearChange")
+```
+
 Note that in the future I hope to add more functionality and deal with seasonal data. These methods *should* also work for other Hadley Centre data sets, but I have not yet tested them.
 
 
