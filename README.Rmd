@@ -23,7 +23,7 @@ install_github("hadsstR", "jebyrnes")
 
 ## Loading and Creating Derived Data for Analysis
 
-```{r, cache=FALSE}
+```{r, cache=TRUE}
 library(hadsstR)
 sstData <- loadHadSST(directory="../", hadsstFilename="HadISST_sst.nc") 
 summary(sstData)
@@ -31,7 +31,7 @@ summary(sstData)
 
 One can then work with the dataset in a number of ways. For now, the functions all begin by creating annual averages, and working from there. The getClimateChange function generates a list of different matrices that can be used for further analyses of climate change.
 
-```{r, cache=FALSE}
+```{r, cache=TRUE}
 climateChangeMats <- getClimateChange(sstData, years=1960:2009)
 ```
 
@@ -55,13 +55,16 @@ levelplot(climateChangeMats$linearChangeMat ~ lon * lat,
 
 We can look at spatial gradients in temperature
 ```{r gradientPlots}
-pal2 <- colorRampPalette(c("green", "lightblue", "lightyellow", "yellow", "orange"))
+pal2 <- colorRampPalette(c("darkblue", "blue", "green", "white", "yellow", "orange", "red"))
 with(climateChangeMats, image(lon, lat, spatialGradMat, col=pal2(101)))
 
-levelplot(climateChangeMats$NSmat ~ lon * lat, col.regions=pal(100),
-          data = latLonGrid, at=seq(-0.015, 0.015, length.out=100))
 
-levelplot(climateChangeMats$WEmat ~ lon * lat, col.regions=pal2(100),
+palNS <- colorRampPalette(c("green", "white", "purple"))
+levelplot(climateChangeMats$NSmat ~ lon * lat, col.regions=palNS(100),
+          data = latLonGrid, at=seq(-0.03, 0.03, length.out=100))
+
+palWE <- colorRampPalette(c("orange", "white", "blue"))
+levelplot(climateChangeMats$WEmat ~ lon * lat, col.regions=palWE(100),
   data = latLonGrid, at=seq(-0.025, 0.025, length.out=100))
 ``` 
 

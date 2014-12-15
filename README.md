@@ -72,19 +72,21 @@ linearChangePlot](README_files/figure-markdown_strict/linearChangePlot.png)
 
 We can look at spatial gradients in temperature
 
-    pal2 <- colorRampPalette(c("green", "lightblue", "lightyellow", "yellow", "orange"))
+    pal2 <- colorRampPalette(c("darkblue", "blue", "green", "white", "yellow", "orange", "red"))
     with(climateChangeMats, image(lon, lat, spatialGradMat, col=pal2(101)))
 
 ![plot of chunk
 gradientPlots](README_files/figure-markdown_strict/gradientPlots1.png)
 
-    levelplot(climateChangeMats$NSmat ~ lon * lat, col.regions=pal(100),
-              data = latLonGrid, at=seq(-0.015, 0.015, length.out=100))
+    palNS <- colorRampPalette(c("green", "white", "purple"))
+    levelplot(climateChangeMats$NSmat ~ lon * lat, col.regions=palNS(100),
+              data = latLonGrid, at=seq(-0.025, 0.025, length.out=100))
 
 ![plot of chunk
 gradientPlots](README_files/figure-markdown_strict/gradientPlots2.png)
 
-    levelplot(climateChangeMats$WEmat ~ lon * lat, col.regions=pal2(100),
+    palWE <- colorRampPalette(c("orange", "white", "blue"))
+    levelplot(climateChangeMats$WEmat ~ lon * lat, col.regions=palWE(100),
       data = latLonGrid, at=seq(-0.025, 0.025, length.out=100))
 
 ![plot of chunk
