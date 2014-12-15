@@ -33,29 +33,34 @@ getSSTChangeMat<- function(sstObj, years=1969:2009){
   
 }
 
-
-getNSChangeMat <- function(averageMat){
+#note - you might think that I've reversed rows and columns in the below method
+#but, the matrices are stored on their sides - so this is a little wonky
+#e.g. I use rows for WE and columns for NS due to being a transposed matrix
+getWEChangeMat <- function(averageMat,latitudes){
   
   #make change matrices
-  NSmat <- averageMat[1:(nrow(averageMat)-1),] - averageMat[2:nrow(averageMat),]
-  NSmat <- rbind(NSmat, NA)
-  NSmat <- NSmat/111.325 #correct for distance (km)
+  WEmat <- averageMat[1:(nrow(averageMat)-1),] - averageMat[2:nrow(averageMat),]
+  WEmat <- rbind(WEmat, averageMat[nrow(averageMat),] - averageMat[1,])
+  WEmat <- t(t(WEmat)/111.325*cos(latitudes*pi/180))
+  WEmat * -1 #multiplying by -1 so that it is compatible with Burrows, higher temp in the East
 }
 
 
-getEWChangeMat <- function(averageMat, latitudes){
- 
-  EWmat <- averageMat[,1:(ncol(averageMat)-1)] - averageMat[,2:ncol(averageMat)]
-  EWmat <- cbind(EWmat, averageMat[,ncol(averageMat)] - averageMat[,1])
-  EWmat <- t(t(EWmat)/111.325*cos(latitudes*pi/180))
+
+getNSChangeMat <- function(averageMat){
+  
+  NSmat <- averageMat[,1:(ncol(averageMat)-1)] - averageMat[,2:ncol(averageMat)]
+  NSmat <- cbind(NSmat, NA)
+  NSmat <- NSmat/111.325
+  NSmat 
 }
 
 
 #function to get the spatially averaged gradient
-getSpatialGrad <- function(NSmat, EWmat, i,j){
+getSpatialGrad <- function(NSmat, WEmat, i,j){
 
   li <- ncol(NSmat)
-  lj <- nrow(EWmat)
+  lj <- nrow(WEmat)
   # print(c(i,j))
   #get bounding box indices
   id <- i+1
@@ -72,8 +77,8 @@ getSpatialGrad <- function(NSmat, EWmat, i,j){
                            NSmat[iu,jl], NSmat[iu,jr], NSmat[id,jl], NSmat[id,jr]),
                          c(2,2,rep(1,4)), na.rm=T)
   #oops - did this the wrong direction, so, multiplying by -1 to correct
-  xGrad <- weighted.mean(c(EWmat[i,j],EWmat[i,jl], 
-                           EWmat[iu,jl], EWmat[iu,jr], EWmat[id,jl], EWmat[id,jr]),
+  xGrad <- weighted.mean(c(WEmat[i,j],WEmat[i,jl], 
+                           WEmat[iu,jl], WEmat[iu,jr], WEmat[id,jl], WEmat[id,jr]),
                          c(2,2,rep(1,4)), na.rm=T)
   
   #some convrsion to radial coordinates
@@ -88,14 +93,14 @@ getSpatialGrad <- function(NSmat, EWmat, i,j){
   
 }
 
-getSpatialGradMatsFromMats <- function(NSmat, EWmat){
+getSpatialGradMatsFromMats <- function(NSmat, WEmat){
   #greate matrices for spatial gradients and velocity
-  spatialMat <- matrix(NA, nrow=nrow(EWmat), ncol=ncol(EWmat))
-  angleMat <- matrix(NA, nrow=nrow(EWmat), ncol=ncol(EWmat))
+  spatialMat <- matrix(NA, nrow=nrow(WEmat), ncol=ncol(WEmat))
+  angleMat <- matrix(NA, nrow=nrow(WEmat), ncol=ncol(WEmat))
   
   for(i in 1:nrow(spatialMat)){
     for(j in 1:ncol(spatialMat)){
-      spatialGrad <- getSpatialGrad(NSmat, EWmat, i,j)
+      spatialGrad <- getSpatialGrad(NSmat, WEmat, i,j)
       spatialMat[i,j] <- spatialGrad[1]
       angleMat[i,j] <- spatialGrad[2]
     }
@@ -113,7 +118,7 @@ getSpatialGradMats <- function(sstObj, years=1969:2009){
   
   #get info on spatial gradients
   NSmat <- getNSChangeMat(averageMat)
-  EWmat <- getEWChangeMat(averageMat, sstObj$lat)
+  WEmat <- getWEChangeMat(averageMat, sstObj$lat)
   
-  getSpatialGradMatsFromMats(NSmat, EWmat)
+  getSpatialGradMatsFromMats(NSmat, WEmat)
 }
