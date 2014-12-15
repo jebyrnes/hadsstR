@@ -61,8 +61,8 @@ with(climateChangeMats, image(lon, lat, spatialGradMat, col=pal2(101)))
 levelplot(climateChangeMats$NSmat ~ lon * lat, col.regions=pal(100),
           data = latLonGrid, at=seq(-0.015, 0.015, length.out=100))
 
-levelplot(climateChangeMats$EWmat ~ lon * lat, col.regions=pal2(100),
-          data = latLonGrid, at=seq(-0.025, 0.025, length.out=100))
+levelplot(climateChangeMats$WEmat ~ lon * lat, col.regions=pal2(100),
+  data = latLonGrid, at=seq(-0.025, 0.025, length.out=100))
 ``` 
 
 And with all of this, we can see climate change velocity

@@ -48,7 +48,8 @@ example, average temperature over the timespan
 
     with(climateChangeMats, image(lon, lat, averageMat, col=pal(80)))
 
-![](README_files/figure-markdown_strict/averagePlot-1.png)
+![plot of chunk
+averagePlot](README_files/figure-markdown_strict/averagePlot.png)
 
 Or the slope of the regression between temperature and year for each
 lat/long cell
@@ -59,24 +60,37 @@ lat/long cell
     levelplot(climateChangeMats$linearChangeMat ~ lon * lat, 
       data = latLonGrid, col.regions = pal(101), at=seq(-1,1,length.out=101))
 
-![](README_files/figure-markdown_strict/linearChangePlot-1.png)
+![plot of chunk
+linearChangePlot](README_files/figure-markdown_strict/linearChangePlot.png)
 
 We can look at spatial gradients in temperature
 
-    pal2 <- colorRampPalette(c("green", "lightblue", "white", "yellow", "orange"))
+    pal2 <- colorRampPalette(c("green", "lightblue", "lightyellow", "yellow", "orange"))
     with(climateChangeMats, image(lon, lat, spatialGradMat, col=pal2(101)))
 
-![](README_files/figure-markdown_strict/gradientPlots-1.png)
+![plot of chunk
+gradientPlots](README_files/figure-markdown_strict/gradientPlots1.png)
 
     levelplot(climateChangeMats$NSmat ~ lon * lat, col.regions=pal(100),
               data = latLonGrid, at=seq(-0.015, 0.015, length.out=100))
 
-![](README_files/figure-markdown_strict/gradientPlots-2.png)
+![plot of chunk
+gradientPlots](README_files/figure-markdown_strict/gradientPlots2.png)
 
-    levelplot(climateChangeMats$EWmat ~ lon * lat, col.regions=pal2(100),
+    levelplot(climateChangeMats$WEmat ~ lon * lat, col.regions=pal2(100),
               data = latLonGrid, at=seq(-0.025, 0.025, length.out=100))
 
-![](README_files/figure-markdown_strict/gradientPlots-3.png)
+    ## Warning: NAs introduced by coercion
+    ## Warning: no non-missing arguments to min; returning Inf
+    ## Warning: no non-missing arguments to max; returning -Inf
+    ## Warning: NAs introduced by coercion
+    ## Warning: no non-missing arguments to min; returning Inf
+    ## Warning: no non-missing arguments to min; returning Inf
+    ## Warning: no non-missing arguments to min; returning Inf
+    ## Warning: no non-missing arguments to max; returning -Inf
+
+![plot of chunk
+gradientPlots](README_files/figure-markdown_strict/gradientPlots3.png)
 
 And with all of this, we can see climate change velocity
 
@@ -91,7 +105,8 @@ And with all of this, we can see climate change velocity
               col.regions = pal(100),
                at=seq(-200,200,length.out=100))
 
-![](README_files/figure-markdown_strict/velocityPlots-1.png)
+![plot of chunk
+velocityPlots](README_files/figure-markdown_strict/velocityPlots.png)
 
 Note that in the future I hope to add more functionality and deal with
 seasonal data. These methods *should* also work for other Hadley Centre
