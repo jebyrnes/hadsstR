@@ -80,7 +80,7 @@ gradientPlots](README_files/figure-markdown_strict/gradientPlots1.png)
 
     palNS <- colorRampPalette(c("green", "white", "purple"))
     levelplot(climateChangeMats$NSmat ~ lon * lat, col.regions=palNS(100),
-              data = latLonGrid, at=seq(-0.025, 0.025, length.out=100))
+              data = latLonGrid, at=seq(-0.03, 0.03, length.out=100))
 
 ![plot of chunk
 gradientPlots](README_files/figure-markdown_strict/gradientPlots2.png)
@@ -107,6 +107,14 @@ And with all of this, we can see climate change velocity
 
 ![plot of chunk
 velocityPlots](README_files/figure-markdown_strict/velocityPlots.png)
+
+If we want to extract values for particular metrics at particular
+latitudes and longitudes, we can get the value at the closes lat/long in
+the data.
+
+    getClimateLatLon(climateChangeMats, -50.232, -100.55, "linearChange")
+
+    ## [1] 0.0269
 
 Note that in the future I hope to add more functionality and deal with
 seasonal data. These methods *should* also work for other Hadley Centre
