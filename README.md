@@ -24,6 +24,13 @@ Loading and Creating Derived Data for Analysis
 ----------------------------------------------
 
     library(hadsstR)
+
+    ## Loading required package: ncdf
+
+    ## Warning: package 'ncdf' was built under R version 3.1.1
+
+    ## Loading required package: chron
+
     sstData <- loadHadSST(directory="../", hadsstFilename="HadISST_sst.nc") 
     summary(sstData)
 
@@ -78,16 +85,7 @@ gradientPlots](README_files/figure-markdown_strict/gradientPlots1.png)
 gradientPlots](README_files/figure-markdown_strict/gradientPlots2.png)
 
     levelplot(climateChangeMats$WEmat ~ lon * lat, col.regions=pal2(100),
-              data = latLonGrid, at=seq(-0.025, 0.025, length.out=100))
-
-    ## Warning: NAs introduced by coercion
-    ## Warning: no non-missing arguments to min; returning Inf
-    ## Warning: no non-missing arguments to max; returning -Inf
-    ## Warning: NAs introduced by coercion
-    ## Warning: no non-missing arguments to min; returning Inf
-    ## Warning: no non-missing arguments to min; returning Inf
-    ## Warning: no non-missing arguments to min; returning Inf
-    ## Warning: no non-missing arguments to max; returning -Inf
+      data = latLonGrid, at=seq(-0.025, 0.025, length.out=100))
 
 ![plot of chunk
 gradientPlots](README_files/figure-markdown_strict/gradientPlots3.png)

@@ -32,7 +32,7 @@ cell in degrees C per degree latitude
 
 \code{NSmat} The N-S gradient in temperature for each cell
 
-\code{EWmat} The E-W gradient in temperature for each cell
+\code{WEmat} The W-E gradient in temperature for each cell, positive values mean warmer in the East
 
 \code{lat} Latitudes of the matrices
 
@@ -53,7 +53,7 @@ climateChangeMats <- getClimateChange(sstData)
 
 #Let's plot some of these matrices
 pal <- colorRampPalette(c("blue","white", "red"))
-pal2 <- colorRampPalette(c("green", "lightblue", "white", "yellow", "orange"))
+pal2 <- colorRampPalette(c("green", "lightblue", "lightyellow", "yellow", "orange"))
 #' #create a lat/long grid for easier plotting
 library(lattice)
 latLonGrid <- expand.grid(lon = climateChangeMats$lon, lat = climateChangeMats$lat)
@@ -67,7 +67,7 @@ levelplot(climateChangeMats$linearChangeMat ~ lon * lat,
 
 with(climateChangeMats, image(lon, lat, spatialGradMat, col=pal(81)))
 with(climateChangeMats, image(lon, lat, NSmat, col=pal2(80)))
-levelplot(climateChangeMats$EWmat ~ lon * lat, col.regions=pal2(100),
+levelplot(climateChangeMats$WEmat ~ lon * lat, col.regions=pal2(100),
  data = latLonGrid, at=seq(-0.025, 0.025, length.out=100))
 
 #create a velocity matrix where values >200 and < -200 are truncated to those limits

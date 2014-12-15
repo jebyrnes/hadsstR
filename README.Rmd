@@ -23,7 +23,7 @@ install_github("hadsstR", "jebyrnes")
 
 ## Loading and Creating Derived Data for Analysis
 
-```{r, cache=TRUE}
+```{r, cache=FALSE}
 library(hadsstR)
 sstData <- loadHadSST(directory="../", hadsstFilename="HadISST_sst.nc") 
 summary(sstData)
@@ -31,7 +31,7 @@ summary(sstData)
 
 One can then work with the dataset in a number of ways. For now, the functions all begin by creating annual averages, and working from there. The getClimateChange function generates a list of different matrices that can be used for further analyses of climate change.
 
-```{r, cache=TRUE}
+```{r, cache=FALSE}
 climateChangeMats <- getClimateChange(sstData, years=1960:2009)
 ```
 
