@@ -55,7 +55,7 @@ levelplot(climateChangeMats$linearChangeMat ~ lon * lat,
 
 We can look at spatial gradients in temperature
 ```{r gradientPlots}
-pal2 <- colorRampPalette(c("green", "lightblue", "white", "yellow", "orange"))
+pal2 <- colorRampPalette(c("green", "lightblue", "lightyellow", "yellow", "orange"))
 with(climateChangeMats, image(lon, lat, spatialGradMat, col=pal2(101)))
 
 levelplot(climateChangeMats$NSmat ~ lon * lat, col.regions=pal(100),
