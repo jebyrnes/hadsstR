@@ -24,8 +24,15 @@
 #'
 #' sstAnnualArray <- getSSTAnnualArray(sstData, years)
 #'
-#' getSSTLinearChangeMatFromArray(sstData$sstAnnualArray, years)
+#' changeMat <- getSSTLinearChangeMatFromArray(sstAnnualArray, years)
 #' 
+#' latLonGrid <- expand.grid(lon = sstData$lon, lat = sstData$lat)
+#' 
+#' library(lattice)
+#' levelplot(changeMat ~ lon * lat, 
+#'    data = latLonGrid, col.regions = colorRampPalette(c("blue","white", "red")), 
+#'    at=seq(-1,1,length.out=101))
+#'  
 #decadal change
 getSSTLinearChangeMatFromArray<- function(sstAnnualArray, years=1969:2009){
   changeMat <- apply(sstAnnualArray, c(1,2), function(x){

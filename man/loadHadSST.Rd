@@ -15,7 +15,7 @@ loadHadSST(directory = "./", hadsstFilename = "HadISST_sst.nc",
 Defaults to \code{TRUE}, and flips the array by latitude}
 }
 \value{
-Returns a hadsstData object containing an array of measurements, the latitudes
+Returns a \code{hadsstData} object containing an array of measurements, the latitudes
 and longitudes of data as well as the dates
 
 \code{sstArray} The array of SST by longitude, latitude, and time

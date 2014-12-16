@@ -14,7 +14,7 @@
 #' 
 #' 
 #' @export
-#' @return Returns a hadsstData object containing an array of measurements, the latitudes
+#' @return Returns a \code{hadsstData} object containing an array of measurements, the latitudes
 #' and longitudes of data as well as the dates
 #' @return \code{sstArray} The array of SST by longitude, latitude, and time
 #' @return \code{lon} The values of longitude
