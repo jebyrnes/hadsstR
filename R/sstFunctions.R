@@ -1,8 +1,3 @@
-getSSTLinearChangeMat<- function(sstObj, years=1969:2009){
-  sstAnnualArray <- getSSTAnnualArray(sstObj, years)
-  sstAnnualArray(sstAnnualArray, years)
-}
-
 getSSTChangeMat<- function(sstObj, years=1969:2009){
   sstAnnualArray <- getSSTAnnualArray(sstObj, years)
   changeMat <- sstAnnualArray[,,length(years)] - sstAnnualArray[,,1] 
