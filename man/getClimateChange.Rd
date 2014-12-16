@@ -81,4 +81,7 @@ levelplot(velMatTruncated ~ lon * lat, data = latLonGrid, #at = cutpts,
 \author{
 Jarrett Byrnes.
 }
+\seealso{
+\code{\link{loadHadSST}}, \code{\link{getSSTLinearChangeMatFromArray}}, \code{\link{getSSTAvgMat}}
+}
 

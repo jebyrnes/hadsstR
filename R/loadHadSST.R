@@ -6,7 +6,7 @@
 #' @details Requires that you have downloaded and unpacked a HADSST data file.
 #'
 #' @author Jarrett Byrnes.
-#' @param directory Here is the SST netcdf file found?
+#' @param directory Where is the SST netcdf file found?
 #' @param hadsstFilename The name of the netcdf file
 #' @param latFlip Some of the HADSST data files have the sign of the latitude flipped.
 #' Defaults to \code{TRUE}, and flips the array by latitude

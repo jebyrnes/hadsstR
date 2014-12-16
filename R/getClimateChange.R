@@ -31,6 +31,8 @@
 #' @return \code{lon} Longitudes of the matrices
 #' @return \code{years} The years assessed
 #'
+#' @seealso \code{\link{loadHadSST}}, \code{\link{getSSTLinearChangeMatFromArray}}, \code{\link{getSSTAvgMat}}
+#'
 #' @examples
 #' sstData <- loadHadSST(directory="./", hadsstFilename="HadISST_sst.nc") 
 #' 

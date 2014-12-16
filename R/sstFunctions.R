@@ -1,25 +1,3 @@
-getSSTAvgMatFromArray <- function(sstAnnualArray){
-  apply(sstAnnualArray, c(1,2), function(x) mean(x, na.rm=T))
-}
-
-getSSTAvgMat <- function(sstObj, years=1969:2009){
-  sstAnnualArray <- getSSTAnnualArray(sstObj, years)
-  getSSTAvgMatFromArray(sstAnnualArray)
-}
-
-#decadal change
-getSSTLinearChangeMatFromArray<- function(sstAnnualArray, years=1969:2009){
-  changeMat <- apply(sstAnnualArray, c(1,2), function(x){
-    #check if this is land
-    if(sum(is.na(x))<length(x)) return(10*coef(lm(x~I(years-mean(years))))[2])
-    return(NA)
-  })
-  
-  changeMat
-
-}
-
-
 getSSTLinearChangeMat<- function(sstObj, years=1969:2009){
   sstAnnualArray <- getSSTAnnualArray(sstObj, years)
   sstAnnualArray(sstAnnualArray, years)

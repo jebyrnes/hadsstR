@@ -7,7 +7,7 @@ loadHadSST(directory = "./", hadsstFilename = "HadISST_sst.nc",
   latFlip = TRUE)
 }
 \arguments{
-\item{directory}{Here is the SST netcdf file found?}
+\item{directory}{Where is the SST netcdf file found?}
 
 \item{hadsstFilename}{The name of the netcdf file}
 
