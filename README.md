@@ -6,7 +6,7 @@ of the analyses from Burrows et al. 2011 for SST change and climate
 velocity using the Met Office Hadley Centre Sea Surface Temperature 1.1
 dataset, available at
 <http://www.metoffice.gov.uk/hadobs/hadisst/data/download.html> in
-netcdf format (the file HadISST1.1\_sst\_1870on.pp.gz gunzipped).
+netcdf format (the file HadISST\_sst.nc.gz gunzipped).
 
 It provides a simple function to load the netcdf data.
 

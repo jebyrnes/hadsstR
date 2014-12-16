@@ -7,7 +7,7 @@ output: md_document
 ## A library to examine change in Sea Surface Temperatures
 
 This library was developed following my own interest in replicating some of the analyses from Burrows et al. 2011 for SST change and climate velocity using the 
-Met Office Hadley Centre Sea Surface Temperature 1.1 dataset, available at http://www.metoffice.gov.uk/hadobs/hadisst/data/download.html in netcdf format (the file HadISST1.1_sst_1870on.pp.gz gunzipped).
+Met Office Hadley Centre Sea Surface Temperature 1.1 dataset, available at http://www.metoffice.gov.uk/hadobs/hadisst/data/download.html in netcdf format (the file HadISST_sst.nc.gz gunzipped).
 
 It provides a simple function to load the netcdf data.
 
@@ -20,7 +20,9 @@ install.packages("chron")
 library(devtools)
 install_github("hadsstR", "jebyrnes")
 ```
-
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(hadsstR)
+```
 ## Loading and Creating Derived Data for Analysis
 
 ```{r, cache=TRUE}
