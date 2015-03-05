@@ -4,6 +4,9 @@
 #' \code{getLatLonIDX} Gets the matrix indecies of a given latitude and longitude
 #' 
 #' @details Requires that you have loaded a HADSST data file and/or made a set of climate change matrices.
+#' As lat/long informaiton in the data file is centered around 0.5 for each cell, if the lat or long 
+#' being searched for is a round number (e.g., 3), the function will return values from the cell with the 
+#' lower number (e.g., 2.5 instead of 3.5)
 #'
 #' @author Jarrett Byrnes.
 #' @param lat Latitude
@@ -25,8 +28,8 @@
 
 
 getLatLonIDX <- function(lat, lon, obj){
-  rIDX  <- which(abs(round(lon - obj$lon))==0)
-  cIDX <- which(abs(round(lat - obj$lat))==0)
+  rIDX  <- which(abs(round(lon - obj$lon))==0)[1]
+  cIDX <- which(abs(round(lat - obj$lat))==0)[1]
   
   return(c(rIDX, cIDX))
 }
