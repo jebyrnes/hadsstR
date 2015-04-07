@@ -21,15 +21,15 @@ getWEChangeMat <- function(averageMat,latitudes){
 
 
 getNSChangeMat <- function(averageMat){
-  
-  NSmat <- averageMat[,1:(ncol(averageMat)-1)] - averageMat[,2:ncol(averageMat)]
+
+  NSmat <- averageMat[,2:ncol(averageMat)] - averageMat[,1:(ncol(averageMat)-1)]
   NSmat <- cbind(NSmat, NA)
   NSmat <- NSmat/111.325
   NSmat 
 }
 
 
-#function to get the spatially averaged gradient
+#function to get the spatiall? averaged gradient
 getSpatialGrad <- function(NSmat, WEmat, i,j){
 
   li <- ncol(NSmat)
