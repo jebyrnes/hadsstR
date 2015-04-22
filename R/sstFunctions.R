@@ -14,7 +14,7 @@ getWEChangeMat <- function(averageMat,latitudes){
   #make change matrices
   WEmat <- averageMat[1:(nrow(averageMat)-1),] - averageMat[2:nrow(averageMat),]
   WEmat <- rbind(WEmat, averageMat[nrow(averageMat),] - averageMat[1,])
-  WEmat <- WEmat / (111.325 * cos(latitudes*pi/180))
+  WEmat <- t(t(WEmat) / (111.325 * cos(latitudes*pi/180)))
   WEmat * -1 #multiplying by -1 so that it is compatible with Burrows, higher temp in the East
 }
 
