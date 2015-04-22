@@ -24,13 +24,6 @@ Loading and Creating Derived Data for Analysis
 ----------------------------------------------
 
     library(hadsstR)
-
-    ## Loading required package: ncdf
-
-    ## Warning: package 'ncdf' was built under R version 3.1.1
-
-    ## Loading required package: chron
-
     sstData <- loadHadSST(directory="../", hadsstFilename="HadISST_sst.nc") 
     summary(sstData)
 
@@ -55,8 +48,7 @@ example, average temperature over the timespan
 
     with(climateChangeMats, image(lon, lat, averageMat, col=pal(80)))
 
-![plot of chunk
-averagePlot](README_files/figure-markdown_strict/averagePlot.png)
+![](README_files/figure-markdown_strict/averagePlot-1.png)
 
 Or the slope of the regression between temperature and year for each
 lat/long cell
@@ -67,30 +59,26 @@ lat/long cell
     levelplot(climateChangeMats$linearChangeMat ~ lon * lat, 
       data = latLonGrid, col.regions = pal(101), at=seq(-1,1,length.out=101))
 
-![plot of chunk
-linearChangePlot](README_files/figure-markdown_strict/linearChangePlot.png)
+![](README_files/figure-markdown_strict/linearChangePlot-1.png)
 
 We can look at spatial gradients in temperature
 
     pal2 <- colorRampPalette(c("darkblue", "blue", "green", "white", "yellow", "orange", "red"))
     with(climateChangeMats, image(lon, lat, spatialGradMat, col=pal2(101)))
 
-![plot of chunk
-gradientPlots](README_files/figure-markdown_strict/gradientPlots1.png)
+![](README_files/figure-markdown_strict/gradientPlots-1.png)
 
     palNS <- colorRampPalette(c("green", "white", "purple"))
     levelplot(climateChangeMats$NSmat ~ lon * lat, col.regions=palNS(100),
               data = latLonGrid, at=seq(-0.03, 0.03, length.out=100))
 
-![plot of chunk
-gradientPlots](README_files/figure-markdown_strict/gradientPlots2.png)
+![](README_files/figure-markdown_strict/gradientPlots-2.png)
 
     palWE <- colorRampPalette(c("orange", "white", "blue"))
     levelplot(climateChangeMats$WEmat ~ lon * lat, col.regions=palWE(100),
       data = latLonGrid, at=seq(-0.025, 0.025, length.out=100))
 
-![plot of chunk
-gradientPlots](README_files/figure-markdown_strict/gradientPlots3.png)
+![](README_files/figure-markdown_strict/gradientPlots-3.png)
 
 And with all of this, we can see climate change velocity
 
@@ -105,8 +93,7 @@ And with all of this, we can see climate change velocity
               col.regions = pal(100),
                at=seq(-200,200,length.out=100))
 
-![plot of chunk
-velocityPlots](README_files/figure-markdown_strict/velocityPlots.png)
+![](README_files/figure-markdown_strict/velocityPlots-1.png)
 
 If we want to extract values for particular metrics at particular
 latitudes and longitudes, we can get the value at the closes lat/long in
@@ -114,7 +101,7 @@ the data.
 
     getClimateLatLon(climateChangeMats, -50.232, -100.55, "linearChange")
 
-    ## [1] 0.0269
+    ## [1] 0.0268986
 
 Note that in the future I hope to add more functionality and deal with
 seasonal data. These methods *should* also work for other Hadley Centre
