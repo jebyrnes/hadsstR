@@ -34,5 +34,9 @@ getSSTAnnualArray <- function(sstObj, years=1969:2009){
     sstAnnualArray[,,grep(y,years)] <- apply(yearSST,c(1,2),function(x) mean(x, na.rm=T))
   }
   
+  dimnames(sstAnnualArray) <- list(dimnames(sstObj$sstArray)[[1]], 
+                                   dimnames(sstObj$sstArray)[[2]],
+                                   years)
+  
   return(sstAnnualArray)
 }
