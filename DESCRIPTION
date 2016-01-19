@@ -1,13 +1,18 @@
-Package: hadsstR
-Version: 0.1.10
-Date: 2015-02-26
-Title: Sea Surface Temperature and Climate Change from the HadSST data
-Description: Methods for using netcdf files of HadSST data and deriving
-    quantities such as linear change in climate, climate velocity, etc.
-Author: Jarrett Byrnes
-Maintainer: Jarrett Byrnes <jarrett.byrnes@umb.edu>
-Depends:
-    ncdf,
-    chron
-License: CC0
-LazyData: true
+Package: hadsstr
+Type: Package
+Title: Calculate the Velocity of Climate Change Using Hadley Centre SST
+Version: 0.1
+Date: 2016-01-06
+Author: Who wrote it
+Maintainer: Who to complain to <yourfault@somewhere.net>
+Description: Calculate a suite of sea surface temperature summaries, including
+    the velocity of climate change, annual averages, decadal rate of linear
+    temperature change, and spatial gradient of temperature change using the
+    Hadley Centre.
+License: What license is it under?
+LazyData: TRUE
+Imports:
+    chron (>= 2.3-45),
+    raster (>= 2.3-12),
+    sp (>= 1.0-17)
+RoxygenNote: 5.0.1
