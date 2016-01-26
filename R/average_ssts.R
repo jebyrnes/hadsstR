@@ -32,6 +32,6 @@ get_annual_ssts <- function(hadsst_raster, years = 1969:2011) {
 get_average_sst <- function(hadsst_raster, years = 1969:2011) {
 	yearIDs <- which(chron::years(hadsst_raster@z$Date) %in% years)
 	subset_x <- raster::subset(hadsst_raster, yearIDs)
-	average_sst <- mean(subset_x, na.rm = TRUE)
+	average_sst <- raster::calc(subset_x, mean, na.rm = TRUE)
 	return(average_sst)
 }
