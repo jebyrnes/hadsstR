@@ -158,9 +158,9 @@ get_vocc <- function(hadsst_raster, years = 1969:2009, truncate = TRUE) {
 #' angle of the spatial gradient and velocity of climate change (same angle).
 #' @export
 get_all_rasters <- function(hadsst_raster, years = 1969:2009) {
-	average_sst <- getSSTAvgOverYears(hadsst_raster, years)
+	average_sst <- get_annual_ssts(hadsst_raster, years)
 
-	linear_change <- getSSTLinChangeRaster(hadsst_raster, years)
+	linear_change <- get_sst_linear_change(hadsst_raster, years)
 
 	WE_diffs <- get_WE_diffs(average_sst)
 	NS_diffs <- get_NS_diffs(average_sst)
