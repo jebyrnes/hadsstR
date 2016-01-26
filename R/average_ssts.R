@@ -13,7 +13,7 @@ get_annual_ssts <- function(hadsst_raster, years = 1969:2011) {
 			#browser()
 			yearIDx <- which(chron::years(hadsst_raster@z$Date) == x)
 			subset_x <- raster::subset(hadsst_raster, yearIDx)
-			means <- mean(subset_x, na.rm = TRUE)
+			means <- raster::calc(subset_x, mean, na.rm = TRUE)
 			names(means) <- as.character(x)
 			return(means)
 		})
