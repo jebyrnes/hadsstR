@@ -30,6 +30,7 @@ get_sst_linear_change <- function(hadsst_raster = b, years = 2000:2011) {
 #' @return a single-layer raster with the west-east spatial gradient and
 #' corrected for distance by latitude.
 #' @seealso \code{hadsstr::get_average_sst}
+#' @export
 get_WE_diffs <- function(avg_raster) {
 	f <- matrix(rep(1, 9), nrow=3, ncol=3)
 	lat <- sp::coordinates(avg_raster)[, 2]
@@ -50,6 +51,7 @@ get_WE_diffs <- function(avg_raster) {
 #' @return a single-layer raster with the north-south spatial gradient and
 #' corrected for distance by latitude.
 #' @seealso \code{\link{get_average_sst}}
+#' @export
 
 get_NS_diffs <- function(avg_raster) {
 	f <- matrix(rep(1, 9), nrow=3, ncol=3)
@@ -72,6 +74,7 @@ get_NS_diffs <- function(avg_raster) {
 #' @seealso \code{hadsstr::get_average_sst}, \code{hadsstr::get_vocc}
 #' @references Loarie, S. R., P. B. Duffy, H. Hamilton, G. P. Asner, C. B. Field, and D. D. Ackerly. 2009. The velocity of climate change. Nature 462:1052–5.
 #' Burrows, M. T., D. S. Schoeman, L. B. Buckley, P. Moore, E. S. Poloczanska, K. M. Brander, C. Brown, J. F. Bruno, C. M. Duarte, B. S. Halpern, J. Holding, C. V Kappel, W. Kiessling, M. I. O’Connor, J. M. Pandolfi, C. Parmesan, F. B. Schwing, W. J. Sydeman, and A. J. Richardson. 2011. The pace of shifting climate in marine and terrestrial ecosystems. Science (New York, N.Y.) 334:652–5.
+#' @export
 get_spatial_gradient <- function(NS_gradient, WE_gradient) {
 	f <- matrix(rep(1, 9), nrow=3, ncol=3)
 	x_gradient <- raster::focal(WE_gradient, w = f, nrow=3, ncol=3, pad = TRUE,
