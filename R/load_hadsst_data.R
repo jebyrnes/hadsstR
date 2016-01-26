@@ -4,8 +4,7 @@
 #' @param path to HadISST data in the netcdf format
 #' @export
 load_hadsst <- function(file = "./HadISST_sst.nc") {
-	f1 <- paste0(directory, hadsstFilename)
-	b <- raster::brick(f1)
+	b <- raster::brick(file)
 	raster::NAvalue(b) <- -1000
 	return(b)
 }
