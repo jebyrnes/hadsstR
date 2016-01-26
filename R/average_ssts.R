@@ -10,14 +10,12 @@
 get_annual_ssts <- function(hadsst_raster, years = 1969:2011) {
 	mean_rasts <-
 		apply(matrix(years), 1, function(x) {
-			#browser()
 			yearIDx <- which(chron::years(hadsst_raster@z$Date) == x)
 			subset_x <- raster::subset(hadsst_raster, yearIDx)
 			means <- raster::calc(subset_x, mean, na.rm = TRUE)
 			names(means) <- as.character(x)
 			return(means)
 		})
-	#return(mean_rasts)
 	mean_brick <- raster::brick(mean_rasts)
 	mean_brick <- raster::setZ(mean_brick, as.Date(paste0(years, '-01-01')), 'Date')
 	return(mean_brick)
