@@ -93,7 +93,7 @@ get_spatial_gradient <- function(NS_gradient, WE_gradient) {
 	magnitude <- sqrt(x_gradient^2 + y_gradient^2)
 
 	# Get angle of resultant vector
-	angle <- atan2(x_gradient, y_gradient) * 180 / pi
+	angle <- raster::atan2(x_gradient, y_gradient) * 180 / pi
 
 	# Create correction raster to produce positive angles
 	neg_angles <- (angle < 0) * 360
@@ -135,13 +135,13 @@ get_vocc <- function(hadsst_raster, years = 1969:2009, truncate = TRUE) {
 	if (truncate == TRUE) {
 		m <- c(-Inf, -200, -200, 200, Inf, 200)
 		rclmat <- matrix(m, ncol = 3, byrow = TRUE)
-		VelocityMagRaster <- raster::reclassify(VelocityMagRaster, m)
+		velocity <- raster::reclassify(velocity, m)
 	}
 
 	angle <- raster::subset(spatial_gradient, 'angle')
 
 	velocity_brick <- raster::brick(velocity, angle)
-	names(spatial_grad_brick) <- c('velocity', 'angle')
+	names(velocity_brick) <- c('velocity', 'angle')
 	return(velocity_brick)
 }
 
