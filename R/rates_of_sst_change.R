@@ -119,7 +119,7 @@ get_spatial_gradient <- function(NS_gradient, WE_gradient) {
 #' @references Loarie, S. R., P. B. Duffy, H. Hamilton, G. P. Asner, C. B. Field, and D. D. Ackerly. 2009. The velocity of climate change. Nature 462:1052–5.
 #' Burrows, M. T., D. S. Schoeman, L. B. Buckley, P. Moore, E. S. Poloczanska, K. M. Brander, C. Brown, J. F. Bruno, C. M. Duarte, B. S. Halpern, J. Holding, C. V Kappel, W. Kiessling, M. I. O’Connor, J. M. Pandolfi, C. Parmesan, F. B. Schwing, W. J. Sydeman, and A. J. Richardson. 2011. The pace of shifting climate in marine and terrestrial ecosystems. Science (New York, N.Y.) 334:652–5.
 #' @export
-get_vocc <- function(hadsst_raster, years = 1969:2009, truncate = TRUE) {
+get_vocc <- function(hadsst_raster, years = 1969:2009, truncate = FALSE) {
 
 	linear_change <- get_sst_linear_change(hadsst_raster, years)
 
