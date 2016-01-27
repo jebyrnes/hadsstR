@@ -169,13 +169,11 @@ get_all_rasters <- function(hadsst_raster, years = 1969:2009) {
 	velocity <-
 		linear_change / raster::subset(spatial_gradient, 'spatial_gradient')
 
-	angle <- raster::subset(spatial_gradient, 'angle')
-
 	all_rasters <- raster::brick(average_sst, linear_change,
-															spatial_gradient, velocity, angle)
+															spatial_gradient, velocity)
 
 	names(all_rasters) <- c('average_sst', 'linear_change', 'spatial_gradient',
-												 'velocity_magnitude', 'angle')
+													'angle', 'velocity_magnitude')
 	return(all_rasters)
 }
 
