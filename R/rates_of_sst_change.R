@@ -12,7 +12,7 @@ get_sst_linear_change <- function(hadsst_raster = b, years = 2000:2011) {
 	time_ <- I(years - mean(years))
 	fun <- function(x) {
 		if (sum(is.na(x)) < length(x)) {
-			slope <- 10 * lm(x ~ time_)$coefficients[2]
+			slope <- 10 * lm(x ~ time_, na.action = na.exclude)$coefficients[2]
 			return(slope)
 		}
 		return(NA)
