@@ -22,4 +22,3 @@ neighbouring cells.
 \seealso{
 \code{\link{get_average_sst}}
 }
-

@@ -16,4 +16,4 @@ Imports:
     raster (>= 2.3-12),
     sp (>= 1.0-17), 
     ncdf4 (>= 1.16)
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

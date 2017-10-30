@@ -22,4 +22,3 @@ cells (corrected for distance by latitude).
 \seealso{
 \code{hadsstr::get_average_sst}
 }
-

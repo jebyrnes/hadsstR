@@ -21,4 +21,3 @@ for each cell of each year specified.
 Calculate the average temperature for each year, given a single year or a range of
 years.
 }
-

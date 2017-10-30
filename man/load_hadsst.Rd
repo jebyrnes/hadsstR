@@ -12,4 +12,3 @@ load_hadsst(file = "./HadISST_sst.nc")
 \description{
 Load the netcdf sea surface temperature data.
 }
-

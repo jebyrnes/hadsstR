@@ -25,4 +25,3 @@ Calculate a raster brick object containing the average sst, decadal rate of
 linear temperature change, spatial gradient, and velocity of climate change
 over a time period specified by years.
 }
-

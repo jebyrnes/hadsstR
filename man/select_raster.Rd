@@ -21,4 +21,3 @@ Select layers from the raster brick object created using \code{hadsstr::get_all_
 Layers contain the average sst, decadal rate of linear temperature change,
 spatial gradient, and velocity of climate change for a set of years.
 }
-

@@ -4,7 +4,7 @@
 \alias{get_vocc}
 \title{Calculate the velocity of climate change over a given set of years}
 \usage{
-get_vocc(hadsst_raster, years = 1969:2009, truncate = TRUE)
+get_vocc(hadsst_raster, years = 1969:2009, truncate = FALSE)
 }
 \arguments{
 \item{hadsst_raster}{the HadISST data as a raster object.}
@@ -29,4 +29,3 @@ Burrows, M. T., D. S. Schoeman, L. B. Buckley, P. Moore, E. S. Poloczanska, K. M
 \seealso{
 \code{hadsstr::get_average_sst}
 }
-

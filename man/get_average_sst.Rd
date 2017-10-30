@@ -19,4 +19,3 @@ the time period specified in years.
 \description{
 Calculate the average temperature over a range of years
 }
-

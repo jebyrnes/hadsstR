@@ -26,4 +26,3 @@ Burrows, M. T., D. S. Schoeman, L. B. Buckley, P. Moore, E. S. Poloczanska, K. M
 \seealso{
 \code{hadsstr::get_average_sst}, \code{hadsstr::get_vocc}
 }
-
